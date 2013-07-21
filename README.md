@@ -20,14 +20,16 @@ import "package:okeyee/okeyee.dart";
 Create `Keyboard` object that will store information about registered actions
 
 ```dart
-Keyboard keyboard = new Keyboard();
+var keyboard = new Keyboard();
 ```
+You can create multiple `Keyboard`s and they will be independent.
+
 
 Register actions. You can pass list of `Key`'s or string combinations (Sublime Text like).
 Strings are case insensitive (`"Ctrl+A"` is the same as `"ctrl+a"`)
 
 ```dart
-keyboard.register([Key.Control, Key.Shift, Key.S], () => print("Ctrl + Shift + S"));
+keyboard.register([Key.Ctrl, Key.Shift, Key.S], () => print("Ctrl + Shift + S"));
 
 keyboard.register("ctrl+alt+d", () => print("Alt + Ctrl + D"));
 ```
