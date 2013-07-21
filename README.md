@@ -29,9 +29,9 @@ Register actions. You can pass list of `Key`'s or string combinations (Sublime T
 Strings are case insensitive (`"Ctrl+A"` is the same as `"ctrl+a"`)
 
 ```dart
-keyboard.register([Key.Ctrl, Key.Shift, Key.S], () => print("Ctrl + Shift + S"));
+keyboard.register([Key.Ctrl, Key.Shift, Key.S], (_) => print("Ctrl + Shift + S"));
 
-keyboard.register("ctrl+alt+d", () => print("Alt + Ctrl + D"));
+keyboard.register("ctrl+alt+d", (_) => print("Alt + Ctrl + D"));
 ```
 
 Whitespaces in string combinations are not allowed.
@@ -50,14 +50,14 @@ E.g. F5 will no longer refresh page, Ctrl+A will no longer select all and so on.
 You can register multiple actions to the same combination
 
 ```dart
-keyboard.register("shift+d", () => print("Listener one"));
-keyboard.register("shift+d", () => print("Listener two"));
+keyboard.register("shift+d", (_) => print("Listener one"));
+keyboard.register("shift+d", (_) => print("Listener two"));
 ```
 
 You can unregister actions in a way analogous to registering them
 
 ```dart
-keyboard.unregister([Key.Control, Key.A]);
+keyboard.unregister([Key.Ctrl, Key.A]);
 //or
 keyboard.unregister("ctrl+a");
 ```
