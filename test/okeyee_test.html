@@ -6,6 +6,18 @@
 </head>
 <body>
 <script type="application/dart" src="okeyee_test.dart"></script>
+<script type='text/javascript'>
+    var testRunner = window.testRunner || window.layoutTestController;
+    if (testRunner) {
+      function handleMessage(m) {
+        if (m.data == 'done') {
+          testRunner.notifyDone();
+        }
+      }
+      testRunner.waitUntilDone();
+      window.addEventListener("message", handleMessage, false);
+    }
+</script>
 <script src="packages/browser/dart.js"></script>
 </body>
 </html>

@@ -2,6 +2,9 @@ library okeyee;
 
 import 'dart:html';
 
-part 'src/Key.dart';
-part 'src/Keyboard.dart';
-part 'src/KeyboardActionRegistry.dart';
+part 'src/exceptions.dart';
+part 'src/key.dart';
+part 'src/key_set.dart';
+part 'src/keyboard.dart';
+part 'src/keyboard_action_registry.dart';
+part 'src/mock_key_event.dart';

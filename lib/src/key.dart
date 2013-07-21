@@ -1,21 +1,31 @@
 part of okeyee;
 
+/**
+ * Enum-like represendation of keyboard key, containing keyCode (as returned by [KeyEvent] and name.
+ * 
+ * Static methods allow key lookup by keyCode or by name and also parsing string combination like "ctrl+shift+a" 
+ * into [List] of [Key]s. 
+ * 
+ */
 class Key {
   final int code;  
   final String name;
-  const Key._(int this.code, String this.name);
+  const Key._(this.code, this.name);
   
-  static Key valueOf(int keyCode) => values.firstWhere((key) => key.code == keyCode, orElse: () => NoKey);
+  static Key valueOf(int keyCode) =>
+      values.firstWhere((key) => key.code == keyCode, orElse: () => NoKey);
   
-  static Key forName(String name) => values.firstWhere((key) => key.name == name, orElse: () => throw new NoSuchKeyException(name));
+  static Key forName(String name) =>
+      values.firstWhere((key) => key.name == name.toLowerCase(), orElse: () => throw new NoSuchKeyException(name));
   
-  static List<Key> parseCombination(String combination) => combination.split("+").map((name) => Key.forName(name.toLowerCase())).toList();
+  static List<Key> parseCombination(String combination) =>
+      combination.split("+").map((name) => Key.forName(name)).toList();
   
   String toString() => "<$name:$code>";
   
   //Modifiers
   static const Alt = const Key._(18, "alt");
-  static const Control = const Key._(17, "ctrl");
+  static const Ctrl = const Key._(17, "ctrl");
   static const Shift = const Key._(16, "shift");  
 
   //Letters
@@ -125,7 +135,7 @@ class Key {
   
   static final misc = [Tab, Space, Esc, Enter, Backspace, Insert, Delete, CapsLock];
   
-  static final modifiers = [Alt, Control, Shift];
+  static final modifiers = [Alt, Ctrl, Shift];
   
   static final values = []
                          ..addAll(letters)
@@ -135,13 +145,4 @@ class Key {
                          ..addAll(numkeys)
                          ..addAll(misc)
                          ..addAll(modifiers);
-}
-
-class NoSuchKeyException implements Exception {  
-  final String name;
-  
-  const NoSuchKeyException(String this.name);
-  
-  String toString() => "No such key: [$name]";
-  
 }
