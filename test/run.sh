@@ -2,9 +2,9 @@
 
 set -e
 
-results=$(content_shell --dump-render-tree okeyee_test.html)
+results=$(content_shell --dump-render-tree test/okeyee_test.html)
 
-echo -e "$results"
+echo -e "$results" | grep "CONSOLE"
 
 REGEX="All [0-9]+ tests pass"
 

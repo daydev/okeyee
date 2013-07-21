@@ -2,7 +2,7 @@
 
 ## Description
 
-This Keyboard Actions library will allow you to register listeners for (almost) arbitrary key presses and key combinations without need for ugly ifs with magic constants like 
+This library will allow you to register listeners for (almost) arbitrary key presses and key combinations without need for ugly ifs with magic constants like 
 ```dart
 if (event.keyCode == 13) { //Enter
   //do stuff
@@ -29,7 +29,7 @@ Strings are case insensitive (`"Ctrl+A"` is the same as `"ctrl+a"`)
 ```dart
 keyboard.register([Key.Control, Key.Shift, Key.S], () => print("Ctrl + Shift + S"));
 
-keyboard.registerString("ctrl+alt+d", () => print("Alt + Ctrl + D"));
+keyboard.register("ctrl+alt+d", () => print("Alt + Ctrl + D"));
 ```
 
 Whitespaces in string combinations are not allowed.
@@ -48,8 +48,8 @@ E.g. F5 will no longer refresh page, Ctrl+A will no longer select all and so on.
 You can register multiple actions to the same combination
 
 ```dart
-keyboard.registerString("shift+d", () => print("Listener one"));
-keyboard.registerString("shift+d", () => print("Listener two"));
+keyboard.register("shift+d", () => print("Listener one"));
+keyboard.register("shift+d", () => print("Listener two"));
 ```
 
 You can unregister actions in a way analogous to registering them
@@ -57,6 +57,6 @@ You can unregister actions in a way analogous to registering them
 ```dart
 keyboard.unregister([Key.Control, Key.A]);
 //or
-keyboard.unregisterString("ctrl+a");
+keyboard.unregister("ctrl+a");
 ```
 Press keys and watch your actions execute!

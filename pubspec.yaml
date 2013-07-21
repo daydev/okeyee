@@ -1,7 +1,7 @@
 name: okeyee
-version: 0.1.0
+version: 0.1.5
 author: Egor Day <edaydev@gmail.com>
-description: Keyboard actions library
+description: Keyboard events handling library
 homepage: https://github.com/daydev/okeyee.git
 dependencies:
   browser: any
